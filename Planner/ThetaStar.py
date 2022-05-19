@@ -107,7 +107,7 @@ def ThetaStar(start_point, goal_point, origin_map):
     open_list = []
     @profile
     def compute_cost(p, p_):
-        # print(p, p_, p.parent_)
+        print("if:", p, p_, p.parent_)
         if p.parent_ is not None and line_of_sight(p.parent_, p_) :
             if gfunc_map[p.parent_.row_, p.parent_.col_] + distance(p.parent_, p_) < \
                 gfunc_map[p_.row_, p_.col_]:
@@ -116,7 +116,7 @@ def ThetaStar(start_point, goal_point, origin_map):
                 gfunc_map[p_.row_, p_.col_] = \
                     gfunc_map[p.parent_.row_, p.parent_.col_] + distance(p.parent_, p_)
         elif gfunc_map[p.row_, p.col_] + distance(p, p_) < gfunc_map[p_.row_, p_.col_]:
-
+            print("p:", p)
             p_.parent_ = p
             gfunc_map[p_.row_, p_.col_] = gfunc_map[p.row_, p.col_] + distance(p, p_)
     @profile
